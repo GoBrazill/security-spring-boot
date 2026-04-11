@@ -3,12 +3,9 @@ package org.example.security.controllers;
 import org.example.security.DTOs.UsuarioRequestDTO;
 import org.example.security.services.UsuarioService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/user")
+@RequestMapping
 @RestController
 public class UsuarioController {
 
@@ -18,8 +15,13 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @PostMapping
+    @PostMapping("/user")
     public ResponseEntity<?> criarUsuario(@RequestBody UsuarioRequestDTO dto) {
         return ResponseEntity.ok(usuarioService.criarUsuario(dto));
+    }
+
+    @GetMapping("admin")
+    public String admin() {
+        return "Acesso admin";
     }
 }
