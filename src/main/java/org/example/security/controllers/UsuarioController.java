@@ -15,7 +15,7 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @PostMapping("/user")
+    @PostMapping("user")
     public ResponseEntity<?> criarUsuario(@RequestBody UsuarioRequestDTO dto) {
         return ResponseEntity.ok(usuarioService.criarUsuario(dto));
     }
