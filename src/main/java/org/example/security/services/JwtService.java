@@ -15,4 +15,12 @@ public class JwtService {
                 .signWith(SignatureAlgorithm.HS256,SECRET)
                 .compact();
     }
+
+    public String pegarEmail(String token){
+        return  Jwts.parser()
+                .setSigningKey(SECRET)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
 }
